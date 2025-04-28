@@ -29,7 +29,7 @@ export interface Book {
   title: string;
   description?: string | null;
   publishedDate: Date;
-  authorId: number;
+  author_id: number;
   createdAt: Date;
   updatedAt: Date;
 }

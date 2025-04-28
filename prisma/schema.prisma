@@ -24,8 +24,8 @@ model Books {
   title         String
   description   String?
   publishedDate DateTime
-  author        Authors   @relation(fields: [authorId], references: [id])
-  authorId      Int
+  author        Authors   @relation(fields: [author_id], references: [id])
+  author_id     Int
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 

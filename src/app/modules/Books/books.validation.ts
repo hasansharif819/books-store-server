@@ -10,7 +10,7 @@ const CreateBookValidation = Joi.object({
     publishedDate: Joi.date().required().messages({
       "any.required": "Published date is required",
     }),
-    authorId: Joi.number().integer().required().messages({
+    author_id: Joi.number().integer().required().messages({
       "any.required": "Author ID is required",
     }),
   }),
@@ -22,7 +22,7 @@ const UpdateBookValidation = Joi.object({
     title: Joi.string().optional(),
     description: Joi.string().optional().allow(null),
     publishedDate: Joi.date().optional(),
-    authorId: Joi.number().integer().optional(),
+    author_id: Joi.number().integer().optional(),
   }),
 });
 
