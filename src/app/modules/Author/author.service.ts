@@ -1,13 +1,9 @@
 import httpStatus from "http-status";
 import prisma from "../../utils/prisma";
 import ApiError from "../../utils/appError";
-import { IAuthorFilters } from "../../types";
+import { Author, IAuthorFilters } from "../../types";
 
-const createAuthor = async (authorData: {
-  name: string;
-  bio?: string;
-  birthdate: Date;
-}) => {
+const createAuthor = async (authorData: Author) => {
   const newAuthor = await prisma.authors.create({
     data: authorData,
   });
@@ -71,10 +67,7 @@ const getAuthor = async (id: number) => {
   return author;
 };
 
-const updateAuthor = async (
-  id: number,
-  data: { name?: string; bio?: string; birthdate?: Date }
-) => {
+const updateAuthor = async (id: number, data: Partial<Author>) => {
   await prisma.authors.findUniqueOrThrow({ where: { id } });
 
   const updatedAuthor = await prisma.authors.update({

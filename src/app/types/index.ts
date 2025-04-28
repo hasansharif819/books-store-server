@@ -26,21 +26,14 @@ export interface IBookFilters {
 }
 
 export interface Book {
-  id: number;
   title: string;
   description?: string | null;
   publishedDate: Date;
   author_id: number;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface Author {
-  id: number;
   name: string;
   bio?: string | null;
   birthdate: Date;
-  books: Book[];
-  createdAt: Date;
-  updatedAt: Date;
 }

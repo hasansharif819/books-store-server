@@ -1,18 +1,9 @@
 import httpStatus from "http-status";
 import prisma from "../../utils/prisma";
 import ApiError from "../../utils/appError";
-import { IBookFilters } from "../../types";
-import { equal } from "joi";
+import { Book, IBookFilters } from "../../types";
 
-const createBook = async (bookData: any) => {
-  // const isExist = await prisma.books.findUnique({
-  //   where: {
-  //     title: bookData.title,
-  //   },
-  // });
-  // if (isExist) {
-  //   throw new Error("Book already exist!");
-  // }
+const createBook = async (bookData: Book) => {
   const newBook = await prisma.books.create({
     data: bookData,
   });
@@ -92,7 +83,7 @@ const getBookByID = async (id: number) => {
   return book;
 };
 
-const updateBook = async (bookId: number, bookData: any) => {
+const updateBook = async (bookId: number, bookData: Partial<Book>) => {
   await prisma.books.findUniqueOrThrow({
     where: {
       id: bookId,
