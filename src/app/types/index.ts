@@ -19,6 +19,7 @@ export type IAuthorFilters = {
 
 export interface IBookFilters {
   title?: string;
+  author?: number;
   publishedDate?: string;
   page?: number;
   limit?: number;

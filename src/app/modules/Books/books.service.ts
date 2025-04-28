@@ -2,6 +2,7 @@ import httpStatus from "http-status";
 import prisma from "../../utils/prisma";
 import ApiError from "../../utils/appError";
 import { IBookFilters } from "../../types";
+import { equal } from "joi";
 
 const createBook = async (bookData: any) => {
   // const isExist = await prisma.books.findUnique({
@@ -19,7 +20,7 @@ const createBook = async (bookData: any) => {
 };
 
 const getBooks = async (filters: IBookFilters) => {
-  const { title, page = 1, limit = 10 } = filters;
+  const { title, author, page = 1, limit = 10 } = filters;
   const skip = (page - 1) * limit;
 
   const whereCondition: any = {};
@@ -28,6 +29,12 @@ const getBooks = async (filters: IBookFilters) => {
     whereCondition.title = {
       contains: title,
       mode: "insensitive",
+    };
+  }
+
+  if (author) {
+    whereCondition.author_id = {
+      equals: Number(author),
     };
   }
 

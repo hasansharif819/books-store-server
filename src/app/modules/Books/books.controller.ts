@@ -16,10 +16,11 @@ const createBook = catchAsync(async (req: Request, res: Response) => {
 
 const getBooks = catchAsync(async (req: Request, res: Response) => {
   try {
-    const { title, page, limit } = req.query;
+    const { title, author, page, limit } = req.query;
 
     const filters = {
       title: title as string | undefined,
+      author: author as number | undefined,
       page: page ? Number(page) : undefined,
       limit: limit ? Number(limit) : undefined,
     };
